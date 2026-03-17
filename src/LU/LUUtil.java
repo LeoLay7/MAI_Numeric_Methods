@@ -68,7 +68,7 @@ public class LUUtil {
 
             // x - это i-й столбец обратной матрицы
             for (int j = 0; j < n; j++) {
-                inv.set(j, i, x.getFloat(j));
+                inv.set(j, i, x.getDouble(j));
             }
         }
 

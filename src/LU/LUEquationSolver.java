@@ -33,9 +33,9 @@ public class LUEquationSolver {
                 res.set(i, 0);
             }
             double sum = 0;
-            double value = eq.getValuesCol().getFloat(i);
+            double value = eq.getValuesCol().getDouble(i);
             for (int j = 0; j < i; j++) {
-                sum += eq.getCoefficients().getDouble(i, j) * res.getFloat(j);
+                sum += eq.getCoefficients().getDouble(i, j) * res.getDouble(j);
             }
 
             res.set(i, (value - sum) / diag);
@@ -63,10 +63,10 @@ public class LUEquationSolver {
 
             double sum = 0;
             for (int j = i + 1; j < n; j++) {
-                sum += u.getDouble(i, j) * x.getFloat(j);
+                sum += u.getDouble(i, j) * x.getDouble(j);
             }
 
-            double value = y.getFloat(i);
+            double value = y.getDouble(i);
             x.set(i, (value - sum) / diag);
         }
 

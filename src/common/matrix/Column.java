@@ -20,7 +20,7 @@ public class Column extends Matrix {
         set(row, 0, value);
     }
 
-    public double getFloat(int row) {
+    public double getDouble(int row) {
         return getDouble(row, 0);
     }
 }

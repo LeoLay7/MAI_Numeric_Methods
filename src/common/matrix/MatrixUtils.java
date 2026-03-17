@@ -59,4 +59,48 @@ public class MatrixUtils {
         }
         return m;
     }
+
+    public static Matrix multiply(Matrix a, Matrix b) {
+        int rows = a.getSize().getRows();
+        int cols = b.getSize().getCols();
+        int n = a.getSize().getCols();
+        Matrix result = new Matrix(rows, cols);
+        
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                double sum = 0;
+                for (int k = 0; k < n; k++) {
+                    sum += a.getDouble(i, k) * b.getDouble(k, j);
+                }
+                result.set(i, j, sum);
+            }
+        }
+        return result;
+    }
+
+    public static Matrix add(Matrix a, Matrix b) {
+        int rows = a.getSize().getRows();
+        int cols = a.getSize().getCols();
+        Matrix result = new Matrix(rows, cols);
+        
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result.set(i, j, a.getDouble(i, j) + b.getDouble(i, j));
+            }
+        }
+        return result;
+    }
+
+    public static Matrix subtract(Matrix a, Matrix b) {
+        int rows = a.getSize().getRows();
+        int cols = a.getSize().getCols();
+        Matrix result = new Matrix(rows, cols);
+        
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result.set(i, j, a.getDouble(i, j) - b.getDouble(i, j));
+            }
+        }
+        return result;
+    }
 }

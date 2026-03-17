@@ -3,6 +3,7 @@ package common.equation;
 import common.matrix.Column;
 import common.matrix.Matrix;
 import common.matrix.MatrixElement;
+import common.matrix.MatrixUtils;
 
 import javax.imageio.IIOException;
 import java.io.IOException;
@@ -38,5 +39,21 @@ public class EquationUtils {
             c.set(i, MatrixElement.floatOfString(values[cols - 1]));
         }
         return new Equation(m, c);
+    }
+
+    public static boolean doCheck(Equation equation, Column solution) {
+        Matrix res = MatrixUtils.subtract(
+                MatrixUtils.multiply(equation.getCoefficients(), solution),
+                equation.getValuesCol()
+        );
+
+        MatrixUtils.printMatrix(res, "Результат Ax - b:");
+
+        for (int i = 0; i < res.getSize().getRows(); i++){
+            if (Math.abs(res.getDouble(i, 0)) > 1e-9) {
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -61,4 +61,12 @@ public class Matrix {
             }
         }
     }
+
+    public Column getColumn(int i) {
+        Column res = new Column(size.getRows());
+        for (int row = 0; row < size.getRows(); row++) {
+            res.set(row, this.matrix[row][i]);
+        }
+        return res;
+    }
 }
