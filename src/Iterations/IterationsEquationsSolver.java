@@ -85,7 +85,7 @@ public class IterationsEquationsSolver {
         final int MAX_ITERATIONS = 10000;
 
         do {
-            // Копируем текущее x в xPrev ПЕРЕД вычислениями
+            // Копируем текущее x в xPrev
             for (int i = 0; i < n; i++) {
                 xPrev.set(i, x.getDouble(i));
             }
@@ -97,8 +97,7 @@ public class IterationsEquationsSolver {
 
                 for (int j = 0; j < n; j++) {
                     if (j != i) {
-                        // ❗ ГЛАВНОЕ ИСПРАВЛЕНИЕ:
-                        // Используем xPrev (значения с прошлой итерации), а не x
+                        // Используем xPrev
                         sum -= A.getDouble(row, j) * xPrev.getDouble(j);
                     }
                 }
@@ -110,7 +109,6 @@ public class IterationsEquationsSolver {
                 System.err.println("Превышено кол-во итераций");
                 break;
             }
-            // Проверка точности
         } while (maxDiff(x, xPrev) >= 0.0001);
         System.out.println("Кол-во итераций ПРОСТЫЕ ИТЕРАЦИИ: " + iterations);
         return x;

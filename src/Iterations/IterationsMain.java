@@ -7,7 +7,7 @@ import common.matrix.MatrixUtils;
 
 public class IterationsMain {
     public static void main(String[] args) {
-        Equation equation = EquationUtils.fromFile("C:\\Code\\JavaCode\\MAI_Numeric_Methods\\resources\\equations\\IterationsEquation");
+        Equation equation = EquationUtils.fromFile("C:\\Code\\self\\MAI_Numeric_Methods\\resources\\equations\\IterationsEquation");
 
         System.out.println("МЕТОД ПРОСТЫХ ИТЕРАЦИЙ:");
         Column res1 = IterationsEquationsSolver.solveIteration(equation);

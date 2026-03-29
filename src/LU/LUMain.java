@@ -16,7 +16,7 @@ public class LUMain {
 //        MatrixUtils.printMatrix(lu.getU(), "\nU:");
 //        MatrixUtils.printMatrix(lu.getL(), "\nL:");
 //
-        String eqpath = "C:\\Code\\JavaCode\\MAI_Numeric_Methods\\resources\\equations\\lab.txt";
+        String eqpath = "C:\\Code\\self\\MAI_Numeric_Methods\\resources\\equations\\lab.txt";
         Equation eq = EquationUtils.fromFile(eqpath);
 //        MatrixUtils.printMatrix(eq.getCoefficients());
 //        MatrixUtils.printMatrix(eq.getValuesCol());
