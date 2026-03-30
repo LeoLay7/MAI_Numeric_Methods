@@ -11,16 +11,11 @@ public class LUEquationSolver {
         LU lu = LUUtil.getLU(eq.getCoefficients());
         Matrix l = lu.getL();
         Matrix u = lu.getU();
-        MatrixUtils.printMatrix(l, "\nL:");
-        MatrixUtils.printMatrix(u, "\nU:");
-        MatrixUtils.printMatrix(eq.getValuesCol(), "\nb:");
         // y = Ux
         // Решаем Ly = b
         Column y = solveL(new Equation(l, eq.getValuesCol()));
-        MatrixUtils.printMatrix(y, "\ny:");
         // решаем Ux = y
         Column x = solveU(new Equation(u, y));
-        MatrixUtils.printMatrix(x, "\nx:");
         return x;
     }
 
