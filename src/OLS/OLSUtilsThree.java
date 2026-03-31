@@ -143,7 +143,7 @@ public class OLSUtilsThree {
         System.out.println("-".repeat(80));
         
         // Сохраняем данные в файл
-        try (java.io.PrintWriter writer = new java.io.PrintWriter("C:\\Code\\JavaCode\\MAI_Numeric_Methods\\resources\\graph\\olsres.txt")) {
+        try (java.io.PrintWriter writer = new java.io.PrintWriter("C:\\Code\\self\\MAI_Numeric_Methods\\resources\\graph\\olsres.txt")) {
             writer.println("# Данные для построения графика МНК");
             writer.println("# x f(x) P1(x) P2(x) P3(x)");
             

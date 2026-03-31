@@ -13,62 +13,59 @@ public class OLSMain {
     }
 
     public static void one() {
-        Table table = TableUtils.fromFile("C:\\Code\\JavaCode\\MAI_Numeric_Methods\\resources\\table\\table1.txt");
+        Table table = TableUtils.fromFile("C:\\Code\\self\\MAI_Numeric_Methods\\resources\\table\\table1.txt");
         
         System.out.println("=== ИНТЕРПОЛЯЦИОННЫЕ МНОГОЧЛЕНЫ ===");
         // Многочлен Лагранжа 2-й степени
         System.out.println("=== МНОГОЧЛЕН ЛАГРАНЖА 2-Й СТЕПЕНИ ===");
-        int[] indices2 = OLSUtils.getSelectedPoints(table, 2);
+        int[] indices2 = OLSUtilsOne.getSelectedPoints(table, 2);
         System.out.print("Выбранные точки: ");
         for (int i = 0; i < indices2.length; i++) {
             System.out.printf("(%.2f, %.4f) ", table.getFromX(indices2[i]), table.getFromY(indices2[i]));
         }
         System.out.println();
-        double lagrange2 = OLSUtils.lagrangeInterpolation(table, 2);
-        System.out.printf("L2(%.3f) = %.6f\n", table.getDot(), lagrange2);
-        double errorLagrange2 = OLSUtils.estimateError(table, 2, "lagrange");
+        double lagrange2 = OLSUtilsOne.lagrangeInterpolation(table, 2);
+        System.out.printf("Значение в точке %.3f = %.6f\n", table.getDot(), lagrange2);
+        double errorLagrange2 = OLSUtilsOne.estimateError(table, 2, "lagrange");
         System.out.printf("Оценка погрешности: %.6f\n\n", errorLagrange2);
-        
-        // Многочлен Лагранжа 3-й степени
+
         System.out.println("=== МНОГОЧЛЕН ЛАГРАНЖА 3-Й СТЕПЕНИ ===");
-        int[] indices3 = OLSUtils.getSelectedPoints(table, 3);
+        int[] indices3 = OLSUtilsOne.getSelectedPoints(table, 3);
         System.out.print("Выбранные точки: ");
         for (int i = 0; i < indices3.length; i++) {
             System.out.printf("(%.2f, %.4f) ", table.getFromX(indices3[i]), table.getFromY(indices3[i]));
         }
         System.out.println();
-        double lagrange3 = OLSUtils.lagrangeInterpolation(table, 3);
-        System.out.printf("L3(%.3f) = %.6f\n", table.getDot(), lagrange3);
-        double errorLagrange3 = OLSUtils.estimateError(table, 3, "lagrange");
+        double lagrange3 = OLSUtilsOne.lagrangeInterpolation(table, 3);
+        System.out.printf("Значние в точке %.3f = %.6f\n", table.getDot(), lagrange3);
+        double errorLagrange3 = OLSUtilsOne.estimateError(table, 3, "lagrange");
         System.out.printf("Оценка погрешности: %.6f\n\n", errorLagrange3);
         
-        // Многочлен Ньютона 2-й степени
         System.out.println("=== МНОГОЧЛЕН НЬЮТОНА 2-Й СТЕПЕНИ ===");
         System.out.print("Выбранные точки: ");
         for (int i = 0; i < indices2.length; i++) {
             System.out.printf("(%.2f, %.4f) ", table.getFromX(indices2[i]), table.getFromY(indices2[i]));
         }
         System.out.println();
-        double newton2 = OLSUtils.newtonInterpolation(table, 2);
+        double newton2 = OLSUtilsOne.newtonInterpolation(table, 2);
         System.out.printf("N2(%.3f) = %.6f\n", table.getDot(), newton2);
-        double errorNewton2 = OLSUtils.estimateError(table, 2, "newton");
+        double errorNewton2 = OLSUtilsOne.estimateError(table, 2, "newton");
         System.out.printf("Оценка погрешности: %.6f\n\n", errorNewton2);
         
-        // Многочлен Ньютона 3-й степени
         System.out.println("=== МНОГОЧЛЕН НЬЮТОНА 3-Й СТЕПЕНИ ===");
         System.out.print("Выбранные точки: ");
         for (int i = 0; i < indices3.length; i++) {
             System.out.printf("(%.2f, %.4f) ", table.getFromX(indices3[i]), table.getFromY(indices3[i]));
         }
         System.out.println();
-        double newton3 = OLSUtils.newtonInterpolation(table, 3);
+        double newton3 = OLSUtilsOne.newtonInterpolation(table, 3);
         System.out.printf("N3(%.3f) = %.6f\n", table.getDot(), newton3);
-        double errorNewton3 = OLSUtils.estimateError(table, 3, "newton");
+        double errorNewton3 = OLSUtilsOne.estimateError(table, 3, "newton");
         System.out.printf("Оценка погрешности: %.6f\n", errorNewton3);
     }
 
     public static void two() {
-        Table table = TableUtils.fromFile("C:\\Code\\JavaCode\\MAI_Numeric_Methods\\resources\\table\\table2.txt");
+        Table table = TableUtils.fromFile("C:\\Code\\self\\MAI_Numeric_Methods\\resources\\table\\table2.txt");
         
         System.out.println("=== ЕСТЕСТВЕННЫЙ КУБИЧЕСКИЙ СПЛАЙН ===");
         
@@ -86,7 +83,7 @@ public class OLSMain {
     }
 
     public static void three() {
-        Table table = TableUtils.fromFile("C:\\Code\\JavaCode\\MAI_Numeric_Methods\\resources\\table\\table3.txt");
+        Table table = TableUtils.fromFile("C:\\Code\\self\\MAI_Numeric_Methods\\resources\\table\\table3.txt");
         
         System.out.println("=== МЕТОД НАИМЕНЬШИХ КВАДРАТОВ ===");
         
@@ -104,8 +101,7 @@ public class OLSMain {
             System.out.printf("P%d(%.3f) = %.6f\n\n", degree, table.getDot(), 
                              polynomials[degree - 1].evaluate(table.getDot()));
         }
-        
-        // Данные для построения графика
+
         System.out.println();
         OLSUtilsThree.printGraphData(table, polynomials);
     }

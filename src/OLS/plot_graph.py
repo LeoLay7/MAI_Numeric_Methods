@@ -1,12 +1,8 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 import matplotlib.pyplot as plt
 import numpy as np
 import os
 
 def read_graph_data(filename):
-    """Читает данные из файла для построения графика"""
     original_points = []
     smooth_curves = []
     
@@ -43,7 +39,6 @@ def read_graph_data(filename):
     return np.array(original_points), np.array(smooth_curves)
 
 def plot_least_squares_approximation():
-    """Строит график приближающих многочленов"""
     
     script_dir = os.path.dirname(os.path.abspath(__file__))
     data_file = os.path.join(script_dir, '..', '..', 'resources', 'graph', 'olsres.txt')

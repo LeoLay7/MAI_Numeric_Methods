@@ -3,7 +3,7 @@ package OLS;
 import common.table.Table;
 import java.util.List;
 
-public class OLSUtils {
+public class OLSUtilsOne {
 
     public static int[] getSelectedPoints(Table table, int degree) {
         return selectClosestPoints(table.getX(), table.getDot(), degree + 1);
@@ -32,13 +32,13 @@ public class OLSUtils {
                     li *= (xStar - x.get(idx_j)) / (x.get(idx_i) - x.get(idx_j));
                 }
             }
-            
+            System.out.println("a_" + i + ": " + li);
             result += y.get(idx_i) * li;
         }
         
         return result;
     }
-    
+
     /**
      * Ньютон
      */
@@ -46,35 +46,39 @@ public class OLSUtils {
         List<Double> x = table.getX();
         List<Double> y = table.getY();
         double xStar = table.getDot();
-        
-        // Выбираем ближайшие точки к x*
+
         int[] indices = selectClosestPoints(x, xStar, degree + 1);
-        
+
         // Строим таблицу разделенных разностей
         double[][] dividedDiff = new double[indices.length][indices.length];
-        
+
         // Заполняем первый столбец значениями y
         for (int i = 0; i < indices.length; i++) {
             dividedDiff[i][0] = y.get(indices[i]);
         }
-        
+
         // Вычисляем разделенные разности
         for (int j = 1; j < indices.length; j++) {
             for (int i = 0; i < indices.length - j; i++) {
-                dividedDiff[i][j] = (dividedDiff[i + 1][j - 1] - dividedDiff[i][j - 1]) / 
-                                   (x.get(indices[i + j]) - x.get(indices[i]));
+                dividedDiff[i][j] = (dividedDiff[i + 1][j - 1] - dividedDiff[i][j - 1]) /
+                        (x.get(indices[i + j]) - x.get(indices[i]));
             }
         }
-        
-        // Вычисляем значение многочлена Ньютона
+
+        System.out.print("Коэффициенты Ньютона: a_0 = " + String.format("%.6f", dividedDiff[0][0]));
+        for (int i = 1; i < indices.length; i++) {
+            System.out.print(", a_" + i + " = " + String.format("%.6f", dividedDiff[0][i]));
+        }
+        System.out.println();
+
         double result = dividedDiff[0][0];
         double product = 1.0;
-        
+
         for (int i = 1; i < indices.length; i++) {
             product *= (xStar - x.get(indices[i - 1]));
             result += dividedDiff[0][i] * product;
         }
-        
+
         return result;
     }
     
@@ -135,7 +139,6 @@ public class OLSUtils {
     public static double estimateError(Table table, int degree, String method) {
         List<Double> x = table.getX();
         List<Double> y = table.getY();
-        double xStar = table.getDot();
         
         // Находим максимальную разность между соседними значениями y
         double maxDiff = 0.0;

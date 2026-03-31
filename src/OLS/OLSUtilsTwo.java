@@ -43,14 +43,12 @@ public class OLSUtilsTwo {
         for (int i = 0; i < n - 1; i++) {
             spline.a[i] = y.get(i);
         }
-        
-        // Создаём систему уравнений для c_i
+
         double[] A = new double[n];
         double[] B = new double[n];
         double[] C = new double[n];
         double[] F = new double[n];
-        
-        // Первое уравнение: c_0 = 0 (естественное граничное условие)
+
         A[0] = 0;
         B[0] = 1;
         C[0] = 0;
