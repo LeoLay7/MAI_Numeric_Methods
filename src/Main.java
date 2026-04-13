@@ -1,3 +1,4 @@
+import Integration.IntegrationMain;
 import Iterations.IterationsMain;
 import QR.QRMain;
 import Rotate.RotateMain;
@@ -16,5 +17,8 @@ public class Main {
 
         System.out.println("\n=== QR ===");
         QRMain.main(args);
+
+        System.out.println("\n=== ЧИСЛЕННОЕ ИНТЕГРИРОВАНИЕ ===");
+        IntegrationMain.main(args);
     }
 }
